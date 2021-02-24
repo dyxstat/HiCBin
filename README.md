@@ -1,1 +1,1 @@
-# HICBin
+# HiCBin
