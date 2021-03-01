@@ -56,7 +56,7 @@ python ./hicbin.py pipeline [parameters] FASTA_file BAM_file TAX_file COV_file O
 -e: Case-sensitive enzyme name. Use multiple times for multiple enzymes
 --min-len: Minimum acceptable contig length (default 1000)
 --min-mapq: Minimum acceptable alignment quality (default 30)
---min-match: Accepted alignments must at least be N matches (default 30)
+--min-match: Accepted alignments must be at least N matches (default 30)
 --min-signal: Minimum acceptable signal (default 2)
 --thres: Maximum acceptable fraction of incorrectly identified valid contacts in spurious contact detection (default 10%)
 --min-binsize: Minimum bin size used in output (default 150000)
