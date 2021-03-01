@@ -38,13 +38,25 @@ python ./hicbin.py test test/out
 ### 1.Preprocess Raw reads
 Adaptor sequences are removed by bbduk from the BBTools suite with parameter ‘ktrim=r k=23 mink=11 hdist=1 minlen=50 tpe tbo’ and reads are quality-trimmed using bbduk with parameters ‘trimq=10 qtrim=r ftm=5 minlen=50’. Then, the first 10 nucleotides of each read are trimmed by bbduk with parameter ‘ftl=10’.
 ### 2.Shotgun assembly
-For the shotgun library, de novo metagenome assembly is produced by MEGAHIT with parameters ‘-min-contig-len 1000 -k-min 21 -k-max 141 -k-step 12 -merge-level 20,0.95’.
-### 3.Calculate the coverage of assembled contigs
-Firstly, BBmap from the BBTools suite is applied to map the shotgun reads to the assembled contigs with parameters ‘bamscript=bs.sh; sh bs.sh’. The coverage of contigs is computed using MetaBAT2 v2.12.1 script: ‘jgi summarize bam contig depths’.
-### 4.Aligning Hi-C paired-end reads to contigs
+For the shotgun library, de novo metagenome assembly is produced by MEGAHIT (v1.2.9).
+```
+megahit -1 SG1.fastq.gz -2 SG2.fastq.gz -o ASSEMBLY --min-contig-len 1000 --k-min 21 --k-max 141 --k-step 12 --merge-level 20,0.95
+```
+### 3.Aligning Hi-C paired-end reads to contigs
 Hi-C paired-end reads are mapped to assembled contigs using BWA-MEM with parameters ‘-5SP’. Then, samtools with parameters ‘view -F 0x904’ is applied on the resulting BAM files to remove unmapped reads (0x4) and supplementary (0x800) and secondary (0x100) alignments. 
-### 5.Assign taxonomy to contigs by TAXAassign
+```
+bwa mem -5SP final.contigs.fa hic_read1.fastq.gz hic_read2.fastq.gz| \
+    samtools view -F 0x904 -bS - | \
+    samtools sort -o hic_map.bam -
+```
+### 4.Assign taxonomy to contigs by TAXAassign
 The taxonomic assignment of contigs was resolved using NCBI’s Taxonomy and its nt database by TAXAassign(v0.4) with parameters ‘-p -c 20 -r 10 -m 98 -q 98 -t 95 -a “60,70,80,95,95,98” -f’. 
+### 5.Calculate the coverage of assembled contigs
+Firstly, BBmap from the BBTools suite is applied to map the shotgun reads to the assembled contigs with parameters ‘bamscript=bs.sh; sh bs.sh’. The coverage of contigs is computed using MetaBAT2 v2.12.1 script: ‘jgi summarize bam contig depths’.
+```
+bbmap.sh in1=SG1.fastq.gz in2=SG2.fastq.gz ref=final.contigs.fa out=SG_map.sam bamscript=bs.sh; sh bs.sh
+jgi_summarize_bam_contig_depths --outputDepth coverage.txt --pairedContigs paired.txt SG_map_sorted.bam
+```
 
 ## HiCBin analysis
 ### Usage of the HiCBin pipeline
