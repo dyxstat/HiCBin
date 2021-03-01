@@ -52,7 +52,7 @@ bwa mem -5SP final.contigs.fa hic_read1.fastq.gz hic_read2.fastq.gz| \
 ### 4.Assign taxonomy to contigs by TAXAassign
 The taxonomic assignment of contigs was resolved using NCBI’s Taxonomy and its nt database by TAXAassign(v0.4) with parameters ‘-p -c 20 -r 10 -m 98 -q 98 -t 95 -a “60,70,80,95,95,98” -f’. 
 ### 5.Calculate the coverage of assembled contigs
-Firstly, BBmap from the BBTools suite is applied to map the shotgun reads to the assembled contigs with parameters ‘bamscript=bs.sh; sh bs.sh’. The coverage of contigs is computed using MetaBAT2 v2.12.1 script: ‘jgi summarize bam contig depths’.
+Firstly, BBmap from the BBTools suite is applied to map the shotgun reads to the assembled contigs with parameters ‘bamscript=bs.sh; sh bs.sh’. The coverage of contigs is computed using script: ‘jgi summarize bam contig depths’ from MetaBAT2 v2.12.1.
 ```
 bbmap.sh in1=SG1.fastq.gz in2=SG2.fastq.gz ref=final.contigs.fa out=SG_map.sam bamscript=bs.sh; sh bs.sh
 jgi_summarize_bam_contig_depths --outputDepth coverage.txt --pairedContigs paired.txt SG_map_sorted.bam
