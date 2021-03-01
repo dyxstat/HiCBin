@@ -12,7 +12,7 @@ After installing Anaconda (or miniconda), Users can clone the repository with gi
 git clone --recursive https://github.com/dyxstat/HiCBin.git
 ```
 
-Once complete and assuming you are in the repository folder, then create a HiCBin environment using conda:
+Once complete, you can enter the repository folder and then create a HiCBin environment using conda:
 ```
 # enter the HiCBin folder
 cd HiCBin
