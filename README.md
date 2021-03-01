@@ -47,11 +47,11 @@ Hi-C paired-end reads are mapped to assembled contigs using BWA-MEM with paramet
 The taxonomic assignment of contigs was resolved using NCBI’s Taxonomy and its nt database by TAXAassign(v0.4) with parameters ‘-p -c 20 -r 10 -m 98 -q 98 -t 95 -a “60,70,80,95,95,98” -f’. 
 
 ## HiCBin analysis
-### Usage of HiCBin pipelines
+### Usage of the HiCBin pipeline
 ```
 python ./hicbin.py pipeline [parameters] FASTA_file BAM_file TAX_file COV_file OUT_dir
 ```
-###Parameters
+### Parameters
 ```
 -e: Case-sensitive enzyme name. Use multiple times for multiple enzymes
 --min-len: Minimum acceptable contig length (default 1000)
