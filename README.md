@@ -7,7 +7,7 @@ HiCBin is a new open-source metagenomic Hi-C-based binning pipeline to recover h
 ### conda
 We recommend using conda to run HiCBin.
 
-After installing Anaconda (or miniconda), Users can clone the repository with git
+After installing Anaconda (or miniconda), Users can clone the repository with git:
 ```
 git clone --recursive https://github.com/dyxstat/HiCBin.git
 ```
