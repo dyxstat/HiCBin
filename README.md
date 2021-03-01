@@ -49,7 +49,7 @@ The taxonomic assignment of contigs was resolved using NCBI’s Taxonomy and its
 ## HiCBin analysis
 ### Usage of the HiCBin pipeline
 ```
-python ./hicbin.py pipeline [parameters] FASTA_file BAM_file TAX_file COV_file OUT_dir
+python ./hicbin.py pipeline [parameters] FASTA_file BAM_file TAX_file COV_file OUTPUT_directory
 ```
 ### Parameters
 ```
