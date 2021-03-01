@@ -35,7 +35,7 @@ python ./hicbin.py test test/out
 ```
 
 ## Initial data preparation
-### 1.Preprocess Raw reada
+### 1.Preprocess Raw reads
 Adaptor sequences are removed by bbduk from the BBTools suite with parameter ‘ktrim=r k=23 mink=11 hdist=1 minlen=50 tpe tbo’ and reads are quality-trimmed using bbduk with parameters ‘trimq=10 qtrim=r ftm=5 minlen=50’. Then, the first 10 nucleotides of each read are trimmed by bbduk with parameter ‘ftl=10’.
 ### 2.Shotgun assembly
 For the shotgun library, de novo metagenome assembly is produced by MEGAHIT with parameters ‘-min-contig-len 300 -k-min 21 -k-max 141 -k-step 12 -merge-level 20,0.95’ and contigs shorter than 1 kb are discarded.
