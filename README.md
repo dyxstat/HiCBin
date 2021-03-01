@@ -3,7 +3,7 @@
 ## Introduction
 HiCBin is a new open-source metagenomic Hi-C-based binning pipeline to recover high-quality MAGs. HiCBin employs the HiCzin normalization method and the Leiden community detection algorithm, and includes the spurious contact detection into binning pipelines for the first time.
 
-## Setup
+## Install and Setup
 ### conda
 We recommend using conda to run HiCBin.
 
