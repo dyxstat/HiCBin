@@ -8,19 +8,25 @@ HiCBin is a new open-source metagenomic Hi-C-based binning pipeline to recover h
 We recommend using conda to run HiCBin.
 
 After installing Anaconda (or miniconda), Users can clone the repository with git
-```bash
+```
 git clone --recursive https://github.com/dyxstat/HiCBin.git
 ```
 
-Then create a HiCBin environment:
-```bash
+Once complete and assuming you are in the repository folder, then create a HiCBin environment using conda:
+```
+# enter the HiCBin folder
+cd HiCBin
+# Construct environment
 conda env create -f HiCBin_env.yaml
+# Enter the environment
 conda activate HiCBin_env
 ```
 
 Normalization method in HiCBin depends on R package 'glmmTMB', which is installed in R:
-```bash
+```
+# Enter the R
 R
+# download the R package 
 install.packages("glmmTMB", type="source")
 ```
 
