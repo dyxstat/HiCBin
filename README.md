@@ -29,7 +29,7 @@ R
 # download the R package 
 install.packages("glmmTMB", type="source")
 ```
-Finally, you can test the pipeline, and testing result is in test/out/hicbin.log:
+Finally, you can test the pipeline, and testing result are in test/out/hicbin.log:
 ```
 python ./hicbin.py test test/out
 ```
