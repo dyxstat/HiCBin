@@ -38,7 +38,7 @@ python ./hicbin.py test test/out
 ### 1.Preprocess Raw reads
 Adaptor sequences are removed by bbduk from the BBTools suite with parameter ‘ktrim=r k=23 mink=11 hdist=1 minlen=50 tpe tbo’ and reads are quality-trimmed using bbduk with parameters ‘trimq=10 qtrim=r ftm=5 minlen=50’. Then, the first 10 nucleotides of each read are trimmed by bbduk with parameter ‘ftl=10’.
 ### 2.Shotgun assembly
-For the shotgun library, de novo metagenome assembly is produced by MEGAHIT with parameters ‘-min-contig-len 300 -k-min 21 -k-max 141 -k-step 12 -merge-level 20,0.95’ and contigs shorter than 1 kb are discarded.
+For the shotgun library, de novo metagenome assembly is produced by MEGAHIT with parameters ‘-min-contig-len 1000 -k-min 21 -k-max 141 -k-step 12 -merge-level 20,0.95’.
 ### 3.Calculate the coverage of assembled contigs
 Firstly, BBmap from the BBTools suite is applied to map the shotgun reads to the assembled contigs with parameters ‘bamscript=bs.sh; sh bs.sh’. The coverage of contigs is computed using MetaBAT2 v2.12.1 script: ‘jgi summarize bam contig depths’.
 ### 4.Aligning Hi-C paired-end reads to contigs
