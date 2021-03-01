@@ -35,13 +35,13 @@ python ./hicbin.py test test/out
 ```
 
 ## Initial data preparation
-### 1.Preprocessing Raw reada
+### 1.Preprocess Raw reada
 Adaptor sequences are removed by bbduk from the BBTools suite with parameter ‘ktrim=r k=23 mink=11 hdist=1 minlen=50 tpe tbo’ and reads are quality-trimmed using bbduk with parameters ‘trimq=10 qtrim=r ftm=5 minlen=50’. Then, the first 10 nucleotides of each read are trimmed by bbduk with parameter ‘ftl=10’.
 ### 2.Shotgun assembly
 For the shotgun library, de novo metagenome assembly is produced by MEGAHIT with parameters ‘-min-contig-len 300 -k-min 21 -k-max 141 -k-step 12 -merge-level 20,0.95’ and contigs shorter than 1 kb are discarded.
-### 3.Calculating the coverage of assembled contigs
+### 3.Calculate the coverage of assembled contigs
 Firstly, BBmap from the BBTools suite is applied to map the shotgun reads to the assembled contigs with parameters ‘bamscript=bs.sh; sh bs.sh’. The coverage of contigs is computed using MetaBAT2 v2.12.1 script: ‘jgi summarize bam contig depths’.
-### 4.Alignment of Hi-C paired-end reads
+### 4.Aligning Hi-C paired-end reads to contigs
 Hi-C paired-end reads are mapped to assembled contigs using BWA-MEM with parameters ‘-5SP’. Then, samtools with parameters ‘view -F 0x904’ is applied on the resulting BAM files to remove unmapped reads (0x4) and supplementary (0x800) and secondary (0x100) alignments. 
 ### 5.Assign taxonomy to contigs by TAXAassign
 The taxonomic assignment of contigs was resolved using NCBI’s Taxonomy and its nt database by TAXAassign(v0.4) with parameters ‘-p -c 20 -r 10 -m 98 -q 98 -t 95 -a “60,70,80,95,95,98” -f’. 
