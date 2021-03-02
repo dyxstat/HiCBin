@@ -42,7 +42,7 @@ For the shotgun library, de novo metagenome assembly is produced by MEGAHIT (v1.
 ```
 megahit -1 SG1.fastq.gz -2 SG2.fastq.gz -o ASSEMBLY --min-contig-len 1000 --k-min 21 --k-max 141 --k-step 12 --merge-level 20,0.95
 ```
-### 3.Aligning Hi-C paired-end reads to contigs
+### 3.Align Hi-C paired-end reads to assembled contigs
 Hi-C paired-end reads are mapped to assembled contigs using BWA-MEM with parameters ‘-5SP’. Then, samtools with parameters ‘view -F 0x904’ is applied on the resulting BAM files to remove unmapped reads (0x4) and supplementary (0x800) and secondary (0x100) alignments. 
 ```
 bwa mem -5SP final.contigs.fa hic_read1.fastq.gz hic_read2.fastq.gz| \
@@ -55,7 +55,7 @@ The taxonomic assignment of contigs was resolved using NCBI’s Taxonomy and its
 Firstly, BBmap from the BBTools suite is applied to map the shotgun reads to the assembled contigs with parameters ‘bamscript=bs.sh; sh bs.sh’. The coverage of contigs is computed using script: ‘jgi summarize bam contig depths’ from MetaBAT2 v2.12.1.
 ```
 bbmap.sh in1=SG1.fastq.gz in2=SG2.fastq.gz ref=final.contigs.fa out=SG_map.sam bamscript=bs.sh; sh bs.sh
-jgi_summarize_bam_contig_depths --outputDepth coverage.txt --pairedContigs paired.txt SG_map_sorted.bam
+jgi_summarize_bam_contig_depths --outputDepth coverage.txt --pairedContigs pair.txt SG_map_sorted.bam
 ```
 
 ## HiCBin analysis
