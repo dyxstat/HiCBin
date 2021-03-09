@@ -9,7 +9,7 @@ We recommend using conda to run HiCBin.
 
 After installing Anaconda (or miniconda), Users can clone the repository with git:
 ```
-git clone --recursive https://github.com/dyxstat/HiCBin.git
+git clone https://github.com/dyxstat/HiCBin.git
 ```
 
 Once complete, you can enter the repository folder and then create a HiCBin environment using conda:
