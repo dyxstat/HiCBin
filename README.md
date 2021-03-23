@@ -60,31 +60,76 @@ jgi_summarize_bam_contig_depths --outputDepth coverage.txt --pairedContigs pair.
 ```
 
 ## HiCBin analysis
-### Usage of the HiCBin pipeline
+### Pipeline of the HiCBin 
 ```
 python ./hicbin.py pipeline [parameters] FASTA_file BAM_file TAX_file COV_file OUTPUT_directory
 ```
-### Parameters
+#### Parameters
 ```
--e: Case-sensitive enzyme name. Use multiple times for multiple enzymes (Optional; If no enzyme is input, HiCzin_LC mode will be employed to do normalization)
+-e: Case-sensitive enzyme name. Use multiple times for multiple enzymes 
+(Optional; If no enzyme is input, HiCzin_LC mode will be employed to do normalization)
 --min-len: Minimum acceptable contig length (default 1000)
 --min-mapq: Minimum acceptable alignment quality (default 30)
 --min-match: Accepted alignments must be at least N matches (default 30)
 --min-signal: Minimum acceptable signal (default 2)
 --thres: Maximum acceptable fraction of incorrectly identified valid contacts in spurious contact detection (default 10%)
 --min-binsize: Minimum bin size used in output (default 150000)
+-v: Verbose output
 ```
-### File
+#### Input File
 ```
-FASTA_file: a fasta file of the assembled contig (.fa)
-BAM_file: a bam file of the Hi-C alignment (.bam)
-TAX_file: a csv file of contigs' taxonomy assignment by TAXAassign (.csv)
-COV_file: a txt file of contigs' coverage information computed by script: ‘jgi summarize bam contig depths’ from MetaBAT2 (.txt)
+FASTA_file: a fasta file of the assembled contig (e.g. final.contigs.fa)
+BAM_file: a bam file of the Hi-C alignment (e.g. MAP_SORTED.bam)
+TAX_file: a csv file of contigs' taxonomy assignment by TAXAassign (e.g. contig_tax.csv)
+COV_file: a txt file of contigs' coverage information computed by script: ‘jgi summarize bam contig depths’ from MetaBAT2 (e.g. depth.txt)
 ```
 
+#### Example
+```
+python ./hicbin.py pipeline -e HindIII -e NcoI -v final.contigs.fa MAP_SORTED.bam contig_tax.csv depth.txt out
+```
+If the restriction enzymes employed in the experiment are unspecified, use
+```
+python ./hicbin.py pipeline -v final.contigs.fa MAP_SORTED.bam contig_tax.csv depth.txt out
+```
+The results of the pipeline action are all in the 'out' directory. The draft genomic bins are in 'out/BIN' and 'hicbin.log' file contains the specific implementation information of HiCBin.
+
+### Post-processing step of HiCBin
+This is used to process the partially contaminated bins with completeness larger than 50% and contamination larger than 10%.
+```
+python ./hicbin.py recluster --cover -v FASTA_file Contaminated_Bins_file OUTPUT_directory
+```
+#### Input File
+```
+FASTA_file: a fasta file of the assembled contig (e.g. final.contigs.fa).
+Contaminated_Bins_file: a csv file of the names of the partially contaminated bins; Bin names are arranged 
+                        in columns and don't include the file formats .fa at the end of each name
+```
+Example of a Contaminated_Bins_file:
+```
+BIN0000
+BIN0001
+BIN0005
+...
+```
+##### Please make sure that the OUTPUT_directory is the same as your directory in the pipeline action.
+
+#### Example
+```
+python ./hicbin.py recluster --cover -v final.contigs.fa contaminated_bins.csv out
+```
+The generated sub bins are in 'out/SUB_BIN' and the specific implementation details of the post-processing step will be added to the 'hicbin.log' file.
 
 
+## Contacts and bug reports
+If you have any questions or suggestions, welcome to contact Yuxuan Du (yuxuandu@usc.edu).
 
+## Copyright and License Information
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/.
 
 
 
