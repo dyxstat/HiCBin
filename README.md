@@ -45,9 +45,10 @@ megahit -1 SG1.fastq.gz -2 SG2.fastq.gz -o ASSEMBLY --min-contig-len 1000 --k-mi
 ### 3.Align Hi-C paired-end reads to assembled contigs
 Hi-C paired-end reads are mapped to assembled contigs using BWA-MEM with parameters ‘-5SP’. Then, samtools with parameters ‘view -F 0x904’ is applied on the resulting BAM files to remove unmapped reads (0x4) and supplementary (0x800) and secondary (0x100) alignments. 
 ```
-bwa mem -5SP final.contigs.fa hic_read1.fastq.gz hic_read2.fastq.gz| \
-    samtools view -F 0x904 -bS - | \
-    samtools sort -o hic_map.bam -
+bwa index final.contigs.fa
+bwa mem -5SP final.contigs.fa hic_read1.fastq.gz hic_read2.fastq.gz > MAP.sam
+samtools view -F 0x904 -bS MAP.sam > MAP_UNSORTED.bam
+samtools sort MAP_UNSORTED.bam -o . > MAP_SORTED.bam
 ```
 ### 4.Assign taxonomy to contigs by TAXAassign
 The taxonomic assignment of contigs was resolved using NCBI’s Taxonomy and its nt database by TAXAassign(v0.4) with parameters ‘-p -c 20 -r 10 -m 98 -q 98 -t 95 -a “60,70,80,95,95,98” -f’. 
@@ -65,7 +66,7 @@ python ./hicbin.py pipeline [parameters] FASTA_file BAM_file TAX_file COV_file O
 ```
 ### Parameters
 ```
--e: Case-sensitive enzyme name. Use multiple times for multiple enzymes
+-e: Case-sensitive enzyme name. Use multiple times for multiple enzymes (Optional; If no enzyme is input, HiCzin_LC mode will be employed to do normalization)
 --min-len: Minimum acceptable contig length (default 1000)
 --min-mapq: Minimum acceptable alignment quality (default 30)
 --min-match: Accepted alignments must be at least N matches (default 30)
@@ -73,6 +74,14 @@ python ./hicbin.py pipeline [parameters] FASTA_file BAM_file TAX_file COV_file O
 --thres: Maximum acceptable fraction of incorrectly identified valid contacts in spurious contact detection (default 10%)
 --min-binsize: Minimum bin size used in output (default 150000)
 ```
+### File
+```
+FASTA_file: a fasta file of the assembled contig (.fa)
+BAM_file: a bam file of the Hi-C alignment (.bam)
+TAX_file: a csv file of contigs' taxonomy assignment by TAXAassign (.csv)
+COV_file: a txt file of contigs' coverage information computed by script: ‘jgi summarize bam contig depths’ from MetaBAT2 (.txt)
+```
+
 
 
 
