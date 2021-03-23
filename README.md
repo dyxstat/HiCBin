@@ -67,7 +67,7 @@ python ./hicbin.py pipeline [parameters] FASTA_file BAM_file TAX_file COV_file O
 #### Parameters
 ```
 -e: Case-sensitive enzyme name. Use multiple times for multiple enzymes 
-(Optional; If no enzyme is input, HiCzin_LC mode will be employed to do normalization)
+    (Optional; If no enzyme is input, HiCzin_LC mode will be employed to do normalization)
 --min-len: Minimum acceptable contig length (default 1000)
 --min-mapq: Minimum acceptable alignment quality (default 30)
 --min-match: Accepted alignments must be at least N matches (default 30)
