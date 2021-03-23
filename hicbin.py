@@ -87,7 +87,6 @@ if __name__ == '__main__':
     '''
     cmd_pp.add_argument('FASTA', help='Reference fasta sequence')
     cmd_pp.add_argument('CHECKM',  help='CheckM result')
-    cmd_pp.add_argument('MAP', help='Contact Map instance [Post_processing.p]')
     cmd_pp.add_argument('OUTDIR', help='Output directory of sub bins')           
 
 
@@ -233,8 +232,8 @@ if __name__ == '__main__':
 
 
         if args.command == 'recluster':
-            logger.info('Loading existing contact map instance from: {}'.format(args.MAP))
-            cl = load_object(os.path.join(args.OUTDIR , args.MAP))
+            logger.info('Loading existing contact map instance from: {}'.format(os.path.join(args.OUTDIR , 'Post_processing.p.gz')))
+            cl = load_object(os.path.join(args.OUTDIR , 'Post_processing.p.gz'))
             post = Postprocess(args.OUTDIR , args.CHECKM , cl)
             logger.info('Writing sub bins...')
             gen_sub_bins(args.FASTA , os.path.join(args.OUTDIR ,'cluster_sub.txt') , os.path.join(args.OUTDIR ,'SUB_BIN'))
