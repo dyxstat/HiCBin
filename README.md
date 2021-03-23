@@ -124,6 +124,12 @@ The generated sub bins are in 'out/SUB_BIN' and the specific implementation deta
 ## Contacts and bug reports
 If you have any questions or suggestions, welcome to contact Yuxuan Du (yuxuandu@usc.edu).
 
+## Acknowlegement
+We employ some coding section from bin3C [1] and solidbin [2] in our pipeline. If there are some interest conflicts, please contact Yuxuan Du (yuxuandu@usc.edu).
+[1] DeMaere, M., Darling, A. bin3C: exploiting Hi-C sequencing data to accurately resolve metagenome-assembled genomes. Genome Biology 20, 46 (2019).
+[2] Wang, Ziye and Wang, Zhengyang and Lu, Yang Young and Sun, Fengzhu and Zhu, Shanfeng. SolidBin: improving metagenome binning with semi-supervised normalized cut. Bioinformatics 35, 21 (2019).
+
+
 ## Copyright and License Information
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
