@@ -94,7 +94,7 @@ python ./hicbin.py pipeline -v final.contigs.fa MAP_SORTED.bam contig_tax.csv de
 ```
 The results of the pipeline action are all in the 'out' directory. The draft genomic bins are in 'out/BIN' and 'hicbin.log' file contains the specific implementation information of HiCBin.
 
-### Implement the Post-processing step of HiCBin
+### Implement the post-processing step of HiCBin
 This is used to process the partially contaminated bins with completeness larger than 50% and contamination larger than 10%.
 ```
 python ./hicbin.py recluster --cover -v FASTA_file Contaminated_Bins_file OUTPUT_directory
