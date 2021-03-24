@@ -60,7 +60,7 @@ jgi_summarize_bam_contig_depths --outputDepth coverage.txt --pairedContigs pair.
 ```
 
 ## HiCBin analysis
-### Implement the main pipeline of the HiCBin 
+### Implement the main pipeline of HiCBin 
 ```
 python ./hicbin.py pipeline [Parameters] FASTA_file BAM_file TAX_file COV_file OUTPUT_directory
 ```
