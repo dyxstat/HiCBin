@@ -103,19 +103,6 @@ def app_path(subdir, filename):
     return os.path.join(sys.path[0], subdir, filename)
 
 
-##check whether a function is symmetric
-def is_hermitian(m, tol=1e-6):
-    """
-    Test that a sparse matrix is hermitian (also suffices for symmetric)
-
-    :param m: square matrix
-    :param tol: tolernace above zero for m - m.T < tol
-    :return: True matrix is Hermitian
-    """
-    #np.mat and scipy.sparse type have the attribute of a.H
-    return np.all(~(np.abs(m - m.H) >= tol).todense()) 
-
-
 
 def count_fasta_sequences(file_name):
     """
