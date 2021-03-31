@@ -15,7 +15,7 @@ import scipy.sparse as scisp
 import tqdm
 import csv
 import os
-from utils import save_object, count_fasta_sequences, open_input
+from utils import count_fasta_sequences, open_input
 import logging
 
 # package logger
