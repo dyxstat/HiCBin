@@ -256,14 +256,10 @@ if __name__ == '__main__':
                                 min_mapq=runtime_defaults['min_mapq'],
                                 min_len=runtime_defaults['min_len'],
                                 min_match=runtime_defaults['min_match'],
-                                min_signal=1)
+                                min_signal=0)
 
-            if cm.is_empty():
-                logger.info('Stopping as the contact matrix is empty')
-                sys.exit(1)
-            else:
-                logger.info('Contact map construction section works!')
-
+            logger.info('Contact map construction section works!')
+            
             logger.info('Begin to test the normalization section...')
             logger.info('Normalizing by HiCzin...')
             #print(os.path.join(args.OUTDIR ,'valid_contact.csv'))
@@ -282,7 +278,7 @@ if __name__ == '__main__':
                             cm.seq_info,
                             cm.seq_map,
                             norm_result,
-                            1,
+                            0,
                             0)
             logger.info('Clustering section works!')
             logger.info('Writing bins...')
