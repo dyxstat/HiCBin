@@ -26,9 +26,8 @@ Normalization method in HiCBin depends on R package 'glmmTMB', which is installe
 ```
 # Enter the R
 R
-# download the R package 
+# download the R package and you may need to select a CRAN mirror for the installation.
 install.packages("glmmTMB", type="source")
-# You may need to select a CRAN mirror for the installation.
 ```
 Finally, you can test the pipeline, and testing result are in test/out/hicbin.log:
 ```
