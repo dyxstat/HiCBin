@@ -17,7 +17,8 @@ Once complete, you can enter the repository folder and then create a HiCBin envi
 # enter the HiCBin folder
 cd HiCBin
 # Construct environment
-conda env create -f HiCBin_linux_env.yaml or
+conda env create -f HiCBin_linux_env.yaml 
+or
 conda env create -f HiCBin_OSX_env.yaml
 # Enter the environment
 conda activate HiCBin_env
