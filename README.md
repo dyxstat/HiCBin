@@ -19,7 +19,7 @@ cd HiCBin
 # Construct environment
 conda env create -f HiCBin_linux_env.yaml 
 or
-conda env create -f HiCBin_OSX_env.yaml
+conda env create -f HiCBin_osx_env.yaml
 # Enter the environment
 conda activate HiCBin_env
 ```
