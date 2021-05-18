@@ -171,9 +171,9 @@ def gen_bins(fastafile,resultfile,outputdir):
     for _,cluster in dic.items():
         if bin_name < 10:
             bin = 'BIN'+ '000' + str(bin_name) + '.fa'
-        elif bin_name >= 10 & bin_name < 100:
+        elif bin_name >= 10 and bin_name < 100:
             bin = 'BIN'+ '00' + str(bin_name) + '.fa'
-        elif bin_name >= 100 & bin_name < 1000:
+        elif bin_name >= 100 and bin_name < 1000:
             bin = 'BIN'+ '0' + str(bin_name) + '.fa'
         else:
             bin = 'BIN'+str(bin_name) + '.fa'
@@ -235,9 +235,9 @@ def gen_sub_bins(fastafile,resultfile,outputdir):
     for _,cluster in dic.items():
         if bin_name < 10:
             bin = 'SUB'+ '000' + str(bin_name) + '.fa'
-        elif bin_name >= 10 & bin_name < 100:
+        elif bin_name >= 10 and bin_name < 100:
             bin = 'SUB'+ '00' + str(bin_name) + '.fa'
-        elif bin_name >= 100 & bin_name < 1000:
+        elif bin_name >= 100 and bin_name < 1000:
             bin = 'SUB'+ '0' + str(bin_name) + '.fa'
         else:
             bin = 'SUB'+str(bin_name) + '.fa'
