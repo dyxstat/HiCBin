@@ -74,8 +74,8 @@ if __name__ == '__main__':
                            help='Accepted alignments must being N matches [30]')
     cmd_pl.add_argument('-e', '--enzyme', metavar='NEB_NAME', action='append',
                            help='Case-sensitive enzyme name. Use multiple times for multiple enzymes')
-    cmd_pl.add_argument('--thres', type=int,
-                           help='acceptable fraction of incorrectly identified valid contacts [5%]')
+    cmd_pl.add_argument('--thres', type=float,
+                           help='acceptable fraction of incorrectly identified valid contacts [0.05]')
     cmd_pl.add_argument('FASTA', help='Reference fasta sequence')
     cmd_pl.add_argument('BAM', help='Input bam file in query order')
     cmd_pl.add_argument('TAX', help='Contig labels from TAXAssign')
