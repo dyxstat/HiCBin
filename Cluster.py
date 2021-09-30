@@ -49,8 +49,9 @@ class ClusterBin:
         self.site = np.array(self.site)
         self.len = np.array(self.len)
         self.cov = np.array(self.cov)
-        self.tax= np.array(self.tax)        
-
+        self.tax= np.array(self.tax)
+        
+        self.cov[self.cov==0] = np.min(self.cov[self.cov!=0])
         
         self.norm()  
         del self.site, self.cov 
