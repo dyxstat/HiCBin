@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-from math import exp, log, sqrt
 import numpy as np
 import scipy.sparse as scisp
 from math import log,exp,sqrt
