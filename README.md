@@ -1,4 +1,4 @@
-# HiCBin: Binning metagenomic contigs and recovering metagenome-assembled genomes using Hi-C contact maps
+# HiCBin: binning metagenomic contigs and recovering metagenome-assembled genomes using Hi-C contact maps
 
 ## Introduction
 HiCBin is a new open-source metagenomic Hi-C-based binning pipeline to recover high-quality MAGs. HiCBin employs the HiCzin normalization method and the Leiden community detection algorithm, and includes the spurious contact detection into binning pipelines for the first time.
