@@ -161,7 +161,7 @@ if __name__ == '__main__':
                     logger.info('Stopping as the contact matrix is empty')
                     sys.exit(1)
 
-                logger.info('Contact matrix construction finished')
+                logger.info('Raw contact matrix construction finished')
 
                 logger.info('Normalizing raw contacts by HiCzin...')
                 #print(os.path.join(args.OUTDIR ,'valid_contact.csv'))
@@ -199,7 +199,7 @@ if __name__ == '__main__':
                     logger.info('Stopping as the contact matrix is empty')
                     sys.exit(1)
 
-                logger.info('Contact matrix construction finished')
+                logger.info('Raw contact matrix construction finished')
 
                 logger.info('Normalizing by HiCzin_LC because no enzymes are input...')
             
