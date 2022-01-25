@@ -228,12 +228,12 @@ if __name__ == '__main__':
             logger.info('HiCBin consumes {} seconds in total'.format(str(end_time-start_time)))
 
             logger.info('Saving Cluster instance')
-            save_object(os.path.join(args.OUTDIR, 'HiCzin_normalized_contact.p'), cl)
+            save_object(os.path.join(args.OUTDIR, 'HiCzin_normalized_contact'), cl)
 
 
         if args.command == 'recluster':
-            logger.info('Loading existing contact map instance from: {}'.format(os.path.join(args.OUTDIR , 'HiCzin_normalized_contact.p.gz')))
-            cl = load_object(os.path.join(args.OUTDIR , 'HiCzin_normalized_contact.p.gz'))
+            logger.info('Loading existing contact map instance from: {}'.format(os.path.join(args.OUTDIR , 'HiCzin_normalized_contact.gz')))
+            cl = load_object(os.path.join(args.OUTDIR , 'HiCzin_normalized_contact.gz'))
             post = Postprocess(args.OUTDIR , args.CHECKM , cl)
             logger.info('Writing sub bins...')
             gen_sub_bins(args.FASTA , os.path.join(args.OUTDIR ,'cluster_sub.txt') , os.path.join(args.OUTDIR ,'SUB_BIN'))
