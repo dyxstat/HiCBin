@@ -111,7 +111,9 @@ python ./hicbin.py pipeline -v final.contigs.fa MAP_SORTED.bam contig_tax.csv de
 The results of the HiCBin software are all in the 'out' directory. The initial draft genomic bins are in 'out/BIN' and 'hicbin.log' file contains the specific implementation information of HiCBin.
 
 ### Implement the post-processing step of HiCBin
-This is used to process the partially contaminated bins with completeness larger than 50% and contamination larger than 10%.
+Initial draft genomic bins are assessed using [CheckM](https://github.com/Ecogenomics/CheckM).
+Then the post-processing step of HiCBin is conducted for partially contaminated bins with completeness larger than 50% and contamination larger than 10%.
+in order to purify the contaminated bins.
 ```
 python ./hicbin.py recluster --cover -v FASTA_file Contaminated_Bins_file OUTPUT_directory
 ```
