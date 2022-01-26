@@ -24,7 +24,7 @@ conda env create -f HiCBin_osx_env.yaml
 conda activate HiCBin_env
 ```
 
-Normalization method in HiCBin depends on R package 'glmmTMB'. Though the R package can be installed by 'conda install -c conda-forge r-glmmtmb', you will meet one potential warning derived from the dependency version (https://github.com/glmmTMB/glmmTMB/issues/615): 'Error in .Call("FreeADFunObject", ptr, PACKAGE = DLL) : "FreeADFunObject" not available for .Call() for package "glmmTMB"' and we are not sure whether this warning would influence the noramlization results. To get rid of this warning, we strongly recommend you to install the source version of package 'glmmTMB' directly in R:
+Normalization method in HiCBin depends on R package '[glmmTMB](https://github.com/glmmTMB/glmmTMB)'. Though the R package can be installed by 'conda install -c conda-forge r-glmmtmb', you will meet one potential warning derived from the dependency version (https://github.com/glmmTMB/glmmTMB/issues/615): 'Error in .Call("FreeADFunObject", ptr, PACKAGE = DLL) : "FreeADFunObject" not available for .Call() for package "glmmTMB"' and we are not sure whether this warning would influence the noramlization results. To get rid of this warning, we strongly recommend you to install the source version of package 'glmmTMB' directly in R:
 
 ```
 # Enter the R
@@ -53,12 +53,12 @@ wget https://sra-downloadb.be-md.ncbi.nlm.nih.gov/sos1/sra-pub-run-5/SRR1262938/
 ### 1.Preprocess Raw reads
 Adaptor sequences are removed by bbduk from the BBTools suite with parameter ‘ktrim=r k=23 mink=11 hdist=1 minlen=50 tpe tbo’ and reads are quality-trimmed using bbduk with parameters ‘trimq=10 qtrim=r ftm=5 minlen=50’. Then, the first 10 nucleotides of each read are trimmed by bbduk with parameter ‘ftl=10’.
 ### 2.Shotgun assembly
-For the shotgun library, de novo metagenome assembly is produced by MEGAHIT (v1.2.9).
+For the shotgun library, de novo metagenome assembly is produced by an assembly software, such as MEGAHIT.
 ```
 megahit -1 SG1.fastq.gz -2 SG2.fastq.gz -o ASSEMBLY --min-contig-len 1000 --k-min 21 --k-max 141 --k-step 12 --merge-level 20,0.95
 ```
 ### 3.Align Hi-C paired-end reads to assembled contigs
-Hi-C paired-end reads are mapped to assembled contigs using BWA-MEM with parameters ‘-5SP’. Then, samtools with parameters ‘view -F 0x904’ is applied on the resulting BAM files to remove unmapped reads (0x4) and supplementary (0x800) and secondary (0x100) alignments. 
+Hi-C paired-end reads are mapped to assembled contigs using BWA-MEM with parameters ‘-5SP’. Then, samtools with parameters ‘view -F 0x904’ is applied to remove unmapped reads (0x4) and supplementary (0x800) and secondary (0x100) alignments and then sort BAM files by name.
 ```
 bwa index final.contigs.fa
 bwa mem -5SP final.contigs.fa hic_read1.fastq.gz hic_read2.fastq.gz > MAP.sam
@@ -92,12 +92,12 @@ python ./hicbin.py pipeline [Parameters] FASTA_file BAM_file TAX_file COV_file O
 -v: Verbose output
 ```
 #### Input File
-```
-FASTA_file: a fasta file of the assembled contig (e.g. final.contigs.fa)
-BAM_file: a bam file of the Hi-C alignment (e.g. MAP_SORTED.bam)
-TAX_file: a csv file of contigs' taxonomy assignment by TAXAassign (e.g. contig_tax.csv)
-COV_file: a txt file of contigs' coverage information computed by script: ‘jgi summarize bam contig depths’ from MetaBAT2 (e.g. depth.txt)
-```
+
+**FASTA_file**: a fasta file of the assembled contig (e.g. final.contigs.fa)
+**BAM_file**: a bam file of the Hi-C alignment (e.g. MAP_SORTED.bam)
+**TAX_file**: a csv file of contigs' taxonomy assignment by TAXAassign (e.g. contig_tax.csv)
+**COV_file**: a txt file of contigs' coverage information computed by script: ‘jgi summarize bam contig depths’ from MetaBAT2 (e.g. depth.txt)
+
 
 #### Example
 ```
@@ -107,7 +107,7 @@ If the restriction enzymes employed in the experiment are unspecified, use
 ```
 python ./hicbin.py pipeline -v final.contigs.fa MAP_SORTED.bam contig_tax.csv depth.txt out
 ```
-The results of the pipeline action are all in the 'out' directory. The draft genomic bins are in 'out/BIN' and 'hicbin.log' file contains the specific implementation information of HiCBin.
+The results of the HiCBin software are all in the 'out' directory. The initial draft genomic bins are in 'out/BIN' and 'hicbin.log' file contains the specific implementation information of HiCBin.
 
 ### Implement the post-processing step of HiCBin
 This is used to process the partially contaminated bins with completeness larger than 50% and contamination larger than 10%.
@@ -115,11 +115,9 @@ This is used to process the partially contaminated bins with completeness larger
 python ./hicbin.py recluster --cover -v FASTA_file Contaminated_Bins_file OUTPUT_directory
 ```
 #### Input File
-```
-FASTA_file: a fasta file of the assembled contig (e.g. final.contigs.fa).
-Contaminated_Bins_file: a csv file of the names of the partially contaminated bins; Bin names are arranged 
-                        in columns and don't include the file formats .fa at the end of each name
-```
+**FASTA_file**: a fasta file of the assembled contig (e.g. final.contigs.fa).
+**Contaminated_Bins_file**: a csv file of the names of the partially contaminated bins; Bin names are arranged in columns and don't include the file formats .fa at the end of each name
+
 Example of a Contaminated_Bins_file:
 ```
 BIN0000
