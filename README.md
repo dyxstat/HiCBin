@@ -93,10 +93,10 @@ python ./hicbin.py pipeline [Parameters] FASTA_file BAM_file TAX_file COV_file O
 ```
 #### Input File
 
-**FASTA_file**: a fasta file of the assembled contig (e.g. final.contigs.fa)
-**BAM_file**: a bam file of the Hi-C alignment (e.g. MAP_SORTED.bam)
-**TAX_file**: a csv file of contigs' taxonomy assignment by TAXAassign (e.g. contig_tax.csv)
-**COV_file**: a txt file of contigs' coverage information computed by script: ‘jgi summarize bam contig depths’ from MetaBAT2 (e.g. depth.txt)
+* **FASTA_file**: a fasta file of the assembled contig (e.g. final.contigs.fa)
+* **BAM_file**: a bam file of the Hi-C alignment (e.g. MAP_SORTED.bam)
+* **TAX_file**: a csv file of contigs' taxonomy assignment by TAXAassign (e.g. contig_tax.csv)
+* **COV_file**: a txt file of contigs' coverage information computed by script: ‘jgi summarize bam contig depths’ from MetaBAT2 (e.g. depth.txt)
 
 
 #### Example
@@ -115,8 +115,8 @@ This is used to process the partially contaminated bins with completeness larger
 python ./hicbin.py recluster --cover -v FASTA_file Contaminated_Bins_file OUTPUT_directory
 ```
 #### Input File
-**FASTA_file**: a fasta file of the assembled contig (e.g. final.contigs.fa).
-**Contaminated_Bins_file**: a csv file of the names of the partially contaminated bins; Bin names are arranged in columns and don't include the file formats .fa at the end of each name
+* **FASTA_file**: a fasta file of the assembled contig (e.g. final.contigs.fa).
+* **Contaminated_Bins_file**: a csv file of the names of the partially contaminated bins; Bin names are arranged in columns and don't include the file formats .fa at the end of each name
 
 Example of a Contaminated_Bins_file:
 ```
