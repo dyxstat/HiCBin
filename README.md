@@ -113,7 +113,7 @@ The results of the HiCBin software are all in the 'out' directory. The initial d
 ### Implement the post-processing step of HiCBin
 Initial draft genomic bins are assessed using [CheckM](https://github.com/Ecogenomics/CheckM).
 Then the post-processing step of HiCBin is conducted for partially contaminated bins with completeness larger than 50% and contamination larger than 10%.
-in order to purify the contaminated bins.
+in order to purify the contaminated bins. Please make sure that the OUTPUT_directory is the same as your directory in the pipeline action.
 ```
 python ./hicbin.py recluster --cover -v FASTA_file Contaminated_Bins_file OUTPUT_directory
 ```
@@ -128,7 +128,6 @@ BIN0001
 BIN0005
 ...
 ```
-##### Please make sure that the OUTPUT_directory is the same as your directory in the pipeline action.
 
 #### Example
 ```
