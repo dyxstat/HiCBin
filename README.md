@@ -135,6 +135,7 @@ If you have any questions or suggestions, welcome to contact Yuxuan Du (yuxuandu
 
 ## Citation
 If you use our HiCBin software, please cite the following papers:
+
 [1] Du, Y., Laperriere, S.M., Fuhrman, J., Sun, F.: Normalizing Metagenomic Hi-C Data and Detecting Spurious Contacts Using Zero-Inflated Negative Binomial Regression. J Comput Biol. 29, 106–120. doi:10.1089/cmb.2021.0439
 
 [2] Du, Y., Sun, F. HiCBin: binning metagenomic contigs and recovering metagenome-assembled genomes using Hi-C contact maps. Genome Biol 23, 63 (2022). https://doi.org/10.1186/s13059-022-02626-w
