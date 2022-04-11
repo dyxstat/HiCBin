@@ -52,7 +52,7 @@ Hi-C paired-end reads are mapped to assembled contigs using BWA-MEM with paramet
 bwa index final.contigs.fa
 bwa mem -5SP final.contigs.fa hic_read1.fastq.gz hic_read2.fastq.gz > MAP.sam
 samtools view -F 0x904 -bS MAP.sam > MAP_UNSORTED.bam
-samtools sort MAP_UNSORTED.bam -o . > MAP_SORTED.bam
+samtools sort -n MAP_UNSORTED.bam -o MAP_SORTED.bam
 ```
 ### 4.Assign taxonomy to contigs by TAXAassign
 The taxonomic assignment of contigs was resolved using NCBI’s Taxonomy and its nt database by TAXAassign(v0.4) with parameters ‘-p -c 20 -r 10 -m 98 -q 98 -t 95 -a “60,70,80,95,95,98” -f’. 
