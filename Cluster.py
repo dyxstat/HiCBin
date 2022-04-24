@@ -112,7 +112,8 @@ class ClusterBin:
         
         #############determine the best resolution parameter###########
         st = []
-        res_option = [1,5,10,15,20,25,30]
+        res_option = np.arange(0,300,10)
+        res_option[0] = 1
         for res in res_option:
             part = leidenalg.find_partition(g , leidenalg.RBConfigurationVertexPartition , weights=wei , resolution_parameter = res , n_iterations = -1)
             part = list(part)
@@ -241,7 +242,8 @@ class ClusterBin_LC:
         
         #############determine the best resolution parameter###########
         st = []
-        res_option = [1,5,10,15,20,25,30]
+        res_option = np.arange(0,300,10)
+        res_option[0] = 1
         for res in res_option:
             part = leidenalg.find_partition(g , leidenalg.RBConfigurationVertexPartition , weights=wei , resolution_parameter = res , n_iterations = -1)
             part = list(part)
