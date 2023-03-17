@@ -1,7 +1,7 @@
 # HiCBin: binning metagenomic contigs and recovering metagenome-assembled genomes using Hi-C contact maps
 
 ## Update
-v1.1.0: We released the new version of HiCBin, where we provided more optional resolution parameters for the Leiden clustering in order to retrieve MAGs in high-complete microbial ecosystems.
+v1.1.0: We released the new version of HiCBin, where we provided more optional resolution parameters for the Leiden clustering in order to retrieve MAGs in highly complex microbial ecosystems.
 
 ## Introduction
 HiCBin is a new open-source metagenomic Hi-C-based binning pipeline to recover high-quality MAGs. HiCBin employs the HiCzin normalization method and the Leiden community detection algorithm, and includes the spurious contact detection into binning pipelines for the first time.
