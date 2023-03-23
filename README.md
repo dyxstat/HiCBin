@@ -59,6 +59,13 @@ samtools sort -n MAP_UNSORTED.bam -o MAP_SORTED.bam
 ```
 ### 4.Assign taxonomy to contigs by TAXAassign
 The taxonomic assignment of contigs was resolved using NCBI’s Taxonomy and its nt database by TAXAassign(v0.4) with parameters ‘-p -c 20 -r 10 -m 98 -q 98 -t 95 -a “60,70,80,95,95,98” -f’. 
+
+If you want to use other softwares (e.g., mmseqs2) to generate the taxonomic assignment results, please make sure that
+
+1) Contigs should be assigned to species level with high confidence and accuracy; 
+2) Taxonomy file should be in CSV format, where contig name should be in the first column and the species name should be in the seventh column (you can fill in the middle five columns with any strings since they are not used).
+
+
 ### 5.Calculate the coverage of assembled contigs
 Firstly, BBmap from the BBTools suite is applied to map the shotgun reads to the assembled contigs with parameters ‘bamscript=bs.sh; sh bs.sh’. The coverage of contigs is computed using script: ‘jgi summarize bam contig depths’ from MetaBAT2 v2.12.1.
 ```
