@@ -95,7 +95,7 @@ python ./hicbin.py pipeline [Parameters] FASTA_file BAM_file TAX_file COV_file O
 
 * *FASTA_file*: a fasta file of the assembled contig (e.g. final.contigs.fa)
 * *BAM_file*: a bam file of the Hi-C alignment (e.g. MAP_SORTED.bam)
-* *TAX_file*: a csv file of contigs' taxonomy assignment by TAXAassign (e.g. contig_tax.csv)
+* *TAX_file*: a csv file of contigs' taxonomy assignment results at the species level (e.g. contig_tax.csv)
 * *COV_file*: a txt file of contigs' coverage information computed by script: ‘jgi summarize bam contig depths’ from MetaBAT2 (e.g. depth.txt)
 
 
