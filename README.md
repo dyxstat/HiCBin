@@ -63,7 +63,7 @@ The taxonomic assignment of contigs was resolved using NCBI’s Taxonomy and its
 If you want to use other softwares (e.g., mmseqs2) to generate the taxonomic assignment results, please make sure that
 
 1) Contigs should be assigned to species level with high confidence and accuracy (e.g., 95% ANI); 
-2) Taxonomy file should be in CSV format, where contig name should be in the first column and the species name should be in the seventh column (you can fill in the middle five columns with any strings since they are not used).
+2) Taxonomy file should be in CSV format, where contig name should be in the first column and the species name should be in the seventh column (you can fill in the middle five columns with the same strings since they are not used).
 
 
 ### 5.Calculate the coverage of assembled contigs
