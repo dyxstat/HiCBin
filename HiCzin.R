@@ -78,6 +78,7 @@ HiCzin = function(contig_info_file , valid_contact_file , thres)
     return(result)
  }else{
     colnames(contig_info) = c('contig_name' , 'length' , 'coverage')
+    contig_info[contig_info$coverage==0 , 3] = min(contig_info[contig_info$coverage!=0 , 3])
     
     sample_len = rep(0 , nrow(sample_data))
     sample_cov = rep(0 , nrow(sample_data))
