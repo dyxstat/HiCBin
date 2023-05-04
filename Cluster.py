@@ -186,7 +186,7 @@ class ClusterBin_LC:
 
         self.name = np.array(self.name)
         self.len = np.array(self.len)
-        self.cov = np.array(self.cov)
+        self.cov = np.array(self.cov); self.cov[self.cov==0] = np.min(self.cov[self.cov!=0])
         self.tax= np.array(self.tax)        
 
         
